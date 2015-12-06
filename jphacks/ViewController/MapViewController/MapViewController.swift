@@ -124,6 +124,10 @@ class MapViewController: BaseViewController {
         
         var prel: CLLocationCoordinate2D! = nil
         for (i,l) in self.viaLocations.enumerate() {
+            // すでにその座標が含まれていたらreturn
+            if (location.latitude == l.latitude) && (location.longitude == l.longitude) {
+                return
+            }
             if let unwrappedPrel = prel {
                 let distDiff = getDist(unwrappedPrel, toLocation: location) + getDist(location, toLocation: l) - getDist(unwrappedPrel, toLocation: l)
                 // 最小の更新
