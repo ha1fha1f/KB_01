@@ -330,7 +330,8 @@ extension MapViewController: MKMapViewDelegate {
     
     func PostTweet() {
         let tweetView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        tweetView.setInitialText("寄り道しました！ \n#droppin")
+        // 文字数オーバーには未対処
+        tweetView.setInitialText("寄り道しました！\n\(self.viaSpots.map({$0.name}).joinWithSeparator("〜"))\n#droppin")
         //tweetView.addImage(self.view.GetImage() as UIImage)
         tweetView.addImage(self.mapView.GetImage() as UIImage)
         self.presentViewController(tweetView, animated: true, completion: nil)
