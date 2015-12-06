@@ -17,4 +17,14 @@ class Constants {
     static let COLOR_DISABLED = UIColor.colorFromRGB("b4b4b4", alpha: 1.0)
     static let COLOR_WHITE = UIColor.colorFromRGB("ffffff", alpha: 1.0)
     static let COLOR_YELLOW = UIColor.colorFromRGB("ffeb3b", alpha: 1.0)
+    
+    
+    enum SpotGenre {
+        case NONE
+        case TOILET
+        case NIGHT_VIEW
+        case SIGHTSEEING
+        case SCULPTURE
+        case FILMING
+    }
 }

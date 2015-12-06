@@ -10,6 +10,6 @@
 
 class SightseeingSpot: Spot {
     init(result: [String]) {
-        super.init(name: result[0], address: result[8], detail: result[7], latitude: Double(result[12])!, longitude: Double(result[13])!)
+        super.init(name: result[0], address: result[8], detail: result[7], latitude: Double(result[12])!, longitude: Double(result[13])!, genre: Constants.SpotGenre.SIGHTSEEING)
     }
 }

@@ -8,6 +8,6 @@
 
 class NightViewSpot: Spot {
     init(result: [String]) {
-        super.init(name: result[1], address: result[2], detail: result[4], latitude: Double(result[7])!, longitude: Double(result[8])!)
+        super.init(name: result[1], address: result[2], detail: result[4], latitude: Double(result[7])!, longitude: Double(result[8])!, genre: Constants.SpotGenre.NIGHT_VIEW)
     }
 }

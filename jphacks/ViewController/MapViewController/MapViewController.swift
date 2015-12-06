@@ -102,7 +102,7 @@ class MapViewController: BaseViewController {
             spotDetailView.mapViewController = self
             self.view.addSubview(spotDetailView)
         }
-        spotDetailView.setUp(self.spots.first ?? Spot(name: "大阪", address: "0-0-0", detail: "ｆｄさいｆｊｄしお", latitude: 135, longitude: 35))
+        spotDetailView.setUp(self.spots.first ?? Spot(name: "大阪", address: "0-0-0", detail: "ｆｄさいｆｊｄしお", latitude: 135, longitude: 35, genre: Constants.SpotGenre.NONE))
         spotDetailView.hidden = true
         
         postTweetButton.addTarget(self, action: "PostTweet", forControlEvents: .TouchUpInside)

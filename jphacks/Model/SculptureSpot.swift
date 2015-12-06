@@ -9,6 +9,6 @@
 
 class SculptureSpot: Spot {
     init(result: [String]) {
-        super.init(name: result[1], address: result[6], detail: result[2], latitude: Double(result[7])!, longitude: Double(result[8])!)
+        super.init(name: result[1], address: result[6], detail: result[2], latitude: Double(result[7])!, longitude: Double(result[8])!, genre: Constants.SpotGenre.SCULPTURE)
     }
 }

@@ -49,6 +49,7 @@ class SpotDetailView: UIView {
         self.descriptionView.attributedText = NSAttributedString(string: spot.detail, attributes: attributes)
         self.descriptionView.editable = false
         
+        // 本当はspotからジャンルをとりたい
         self.iconView.image = UIImage(named: "sightseeing.png")
         self.iconView.backgroundColor = UIColor.clearColor()
         

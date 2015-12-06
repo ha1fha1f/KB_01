@@ -9,6 +9,6 @@
 
 class FilmingLocationSpot: Spot {
     init(result: [String]) {
-        super.init(name: result[8], address: result[5], detail: result[9], latitude: Double(result[6])!, longitude: Double(result[7])!)
+        super.init(name: result[8], address: result[5], detail: result[9], latitude: Double(result[6])!, longitude: Double(result[7])!, genre: Constants.SpotGenre.FILMING)
     }
 }

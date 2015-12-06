@@ -51,7 +51,7 @@ class SearchViewController: BaseViewController {
             viaSpots.append(spot)
         } else {
             if let coordinate = locationManager.location?.coordinate {
-                viaSpots.append(Spot(name: "", address: "", detail: "", latitude: coordinate.latitude, longitude: coordinate.longitude))
+                viaSpots.append(Spot(name: "", address: "", detail: "", latitude: coordinate.latitude, longitude: coordinate.longitude, genre: Constants.SpotGenre.NONE))
             } else {
                 let alertViewController = UIAlertController(title: "現在地", message: "位置情報を取得できません", preferredStyle: UIAlertControllerStyle.Alert)
                 self.presentViewController(alertViewController, animated: true, completion: { dispatch_after(2, dispatch_get_main_queue(), {self.dismissViewControllerAnimated(true, completion: nil)}) })
