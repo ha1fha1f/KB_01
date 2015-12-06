@@ -6,18 +6,24 @@
 //  Copyright © 2015年 at. All rights reserved.
 //
 
+import MapKit
+
 class Spot {
     let name: String
     let address: String
     let detail : String
-    let latitude: Double
-    let longitude: Double
+    let location: CLLocationCoordinate2D
+    var latitude: Double {
+        return Double(location.latitude)
+    }
+    var longitude: Double {
+        return Double(location.longitude)
+    }
     
     init(name: String, address: String, detail: String, latitude: Double, longitude: Double) {
         self.name = name
         self.address = address
         self.detail = detail
-        self.latitude = latitude
-        self.longitude = longitude
+        self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }

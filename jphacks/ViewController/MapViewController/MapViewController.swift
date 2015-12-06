@@ -21,7 +21,8 @@ class MapViewController: BaseViewController {
     var spots: [Spot] = []
     
     // 経路として通る点
-    var viaLocations: [CLLocationCoordinate2D] = []
+    //var viaLocations: [CLLocationCoordinate2D] = []
+    var viaSpots: [Spot] = []
     
     var totalTime: Int! = nil
     var totalDist: Int! = nil
@@ -67,10 +68,10 @@ class MapViewController: BaseViewController {
         mapView.delegate = self
         
         // mapの表示範囲
-        fitMapWithSpots(viaLocations.first!, toLocation: viaLocations.last!)
+        fitMapWithSpots(viaSpots.first!.location, toLocation: viaSpots.last!.location)
         
-        addPin(viaLocations.first!)
-        addPin(viaLocations.last!)
+        addPin(viaSpots.first!.location)
+        addPin(viaSpots.last!.location)
         
         // 渡されたspotsについてピンを立てる
         spots.forEach { spot in
@@ -112,19 +113,19 @@ class MapViewController: BaseViewController {
     }
     
     // 適切な位置にinsertする
-    func insertViaLocation(location: CLLocationCoordinate2D) {
+    func insertViaSpot(spot: Spot) {
         var index = 0
         var minDistDiff:Double = 100000000
         
         
         var prel: CLLocationCoordinate2D! = nil
-        for (i,l) in self.viaLocations.enumerate() {
+        for (i,l) in self.viaSpots.map({$0.location}).enumerate() {
             // すでにその座標が含まれていたらreturn
-            if (location.latitude == l.latitude) && (location.longitude == l.longitude) {
+            if (spot.location.latitude == l.latitude) && (spot.location.longitude == l.longitude) {
                 return
             }
             if let unwrappedPrel = prel {
-                let distDiff = getDist(unwrappedPrel, toLocation: location) + getDist(location, toLocation: l) - getDist(unwrappedPrel, toLocation: l)
+                let distDiff = getDist(unwrappedPrel, toLocation: spot.location) + getDist(spot.location, toLocation: l) - getDist(unwrappedPrel, toLocation: l)
                 // 最小の更新
                 if distDiff < minDistDiff {
                     index = i
@@ -135,7 +136,7 @@ class MapViewController: BaseViewController {
             prel = l
         }
         
-        viaLocations.insert(location, atIndex: index)
+        viaSpots.insert(spot, atIndex: index)
         redrawRoutes()
     }
     
@@ -194,7 +195,7 @@ class MapViewController: BaseViewController {
         
         self.routes = []
         var prel: CLLocationCoordinate2D! = nil
-        for l in self.viaLocations {
+        for l in self.viaSpots.map({$0.location}) {
             if let unwrappedPrel = prel {
                 addRoute(unwrappedPrel, toCoordinate: l)
             }

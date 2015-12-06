@@ -21,7 +21,7 @@ class SpotDetailView: UIView {
     var currentSpot: Spot! = nil
     
     @IBAction func addRoute(sender: AnyObject) {
-        mapViewController.insertViaLocation(CLLocationCoordinate2D((latitude: currentSpot.latitude, longitude: currentSpot.longitude)))
+        mapViewController.insertViaSpot(currentSpot)
         self.hidden = true
     }
     
